@@ -7,7 +7,7 @@ body {
 }
 
 .container {
-  max-width: 900px;
+  max-width: 1000px;
   margin: auto;
   background: #fff;
   padding: 20px;
@@ -19,10 +19,39 @@ h1 {
   color: #d32f2f;
 }
 
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-bottom: 15px;
+  justify-content: center;
+}
+
+.tab {
+  background: #e0e0e0;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.tab.active {
+  background: #d32f2f;
+  color: white;
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active-tab {
+  display: block;
+}
+
 .form-section {
   display: flex;
   gap: 10px;
-  margin-bottom: 20px;
   flex-wrap: wrap;
 }
 
@@ -46,15 +75,8 @@ button:hover {
   background-color: #b71c1c;
 }
 
-.category {
-  margin-bottom: 30px;
-}
-
 .category h3 {
-  text-transform: capitalize;
-  color: #333;
-  border-bottom: 2px solid #ccc;
-  padding-bottom: 5px;
+  margin-bottom: 10px;
 }
 
 .red-flag {
