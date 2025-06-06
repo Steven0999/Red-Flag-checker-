@@ -1,4 +1,4 @@
-// script.js
+//script.js
 
 let redFlagData = {};
 
@@ -28,7 +28,7 @@ function createSystemTabs() {
   });
 }
 
-function openTab(tabId) {
+function openTab(tabId, el) {
   document.querySelectorAll(".tab-content").forEach(tab => {
     tab.classList.remove("active-tab");
   });
@@ -36,7 +36,7 @@ function openTab(tabId) {
     btn.classList.remove("active");
   });
   document.getElementById(tabId).classList.add("active-tab");
-  event.target.classList.add("active");
+  el.classList.add("active");
 }
 
 function addRedFlag() {
@@ -129,4 +129,4 @@ function renderRedFlags() {
 
 function capitalize(word) {
   return word.charAt(0).toUpperCase() + word.slice(1);
-}
+                  }
