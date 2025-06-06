@@ -2,20 +2,49 @@
 
 let redFlagData = {};
 
+const systems = [
+  "cardiac", "neuro", "respiratory", "urinary", "gastro", "reproductive",
+  "endocrine", "msk", "trauma", "paediatric", "geriatric", "mental", "other"
+];
+
 window.onload = () => {
   const stored = localStorage.getItem("redFlagData");
   if (stored) {
     redFlagData = JSON.parse(stored);
-    renderRedFlags();
   }
+  createSystemTabs();
+  renderRedFlags();
 };
+
+function createSystemTabs() {
+  const container = document.getElementById("red-flag-tabs");
+  container.innerHTML = "";
+
+  systems.forEach(system => {
+    const section = document.createElement("div");
+    section.id = system;
+    section.classList.add("tab-content");
+    container.appendChild(section);
+  });
+}
+
+function openTab(tabId) {
+  document.querySelectorAll(".tab-content").forEach(tab => {
+    tab.classList.remove("active-tab");
+  });
+  document.querySelectorAll(".tab").forEach(btn => {
+    btn.classList.remove("active");
+  });
+  document.getElementById(tabId).classList.add("active-tab");
+  event.target.classList.add("active");
+}
 
 function addRedFlag() {
   const category = document.getElementById("category").value;
   const text = document.getElementById("flag-text").value.trim();
 
   if (!category || !text) {
-    alert("Please select a category and enter a red flag detail.");
+    alert("Please select a category and enter a red flag.");
     return;
   }
 
@@ -53,18 +82,13 @@ function saveAndRender() {
 }
 
 function renderRedFlags() {
-  const display = document.getElementById("red-flag-display");
-  display.innerHTML = "";
+  systems.forEach(category => {
+    const container = document.getElementById(category);
+    container.innerHTML = `<h3>${capitalize(category)}</h3>`;
 
-  for (let category in redFlagData) {
-    const section = document.createElement("div");
-    section.classList.add("category");
+    const flags = redFlagData[category] || [];
 
-    const header = document.createElement("h3");
-    header.textContent = category;
-    section.appendChild(header);
-
-    redFlagData[category].forEach((flag, index) => {
+    flags.forEach((flag, index) => {
       const flagItem = document.createElement("div");
       flagItem.classList.add("red-flag");
 
@@ -98,9 +122,11 @@ function renderRedFlags() {
       flagItem.appendChild(content);
       flagItem.appendChild(actions);
 
-      section.appendChild(flagItem);
+      container.appendChild(flagItem);
     });
+  });
+}
 
-    display.appendChild(section);
-  }
+function capitalize(word) {
+  return word.charAt(0).toUpperCase() + word.slice(1);
 }
