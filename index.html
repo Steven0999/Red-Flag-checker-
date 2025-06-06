@@ -4,57 +4,48 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Red Flag Markers</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
-    <h1>🚑 Red Flag Markers</h1>
+    <h1>Red Flag Markers</h1>
 
-    <!-- Tabs -->
-    <div class="tabs">
-      <button class="tab active" onclick="openTab('input', this)">➕ Add Red Flag</button>
-      <button class="tab" onclick="openTab('cardiac', this)">❤️ Cardiac</button>
-      <button class="tab" onclick="openTab('neuro', this)">🧠 Neuro</button>
-      <button class="tab" onclick="openTab('respiratory', this)">🌬️ Respiratory</button>
-      <button class="tab" onclick="openTab('urinary', this)">🚽 Urinary</button>
-      <button class="tab" onclick="openTab('gastro', this)">🍽️ Gastro</button>
-      <button class="tab" onclick="openTab('reproductive', this)">🧬 Reproductive</button>
-      <button class="tab" onclick="openTab('endocrine', this)">🩸 Endocrine</button>
-      <button class="tab" onclick="openTab('msk', this)">🦴 MSK</button>
-      <button class="tab" onclick="openTab('trauma', this)">🩹 Trauma</button>
-      <button class="tab" onclick="openTab('paediatric', this)">👶 Paediatric</button>
-      <button class="tab" onclick="openTab('geriatric', this)">👵 Geriatric</button>
-      <button class="tab" onclick="openTab('mental', this)">🧘 Mental Health</button>
-      <button class="tab" onclick="openTab('other', this)">📂 Other</button>
+    <!-- Hamburger Menu -->
+    <div class="hamburger-container">
+      <button id="hamburger" onclick="toggleMenu()">☰ Menu</button>
+      <div id="hamburger-menu" class="hamburger-menu">
+        <button class="tab active" onclick="openTab('input-tab', this)">Add Red Flag</button>
+        <!-- Dynamic system tabs added here -->
+      </div>
     </div>
 
-    <!-- Input Tab -->
-    <div id="input" class="tab-content active-tab">
+    <!-- Add Red Flag Form Tab -->
+    <div id="input-tab" class="tab-content active-tab">
       <div class="form-section">
         <select id="category">
-          <option value="">-- Select Category --</option>
+          <option value="">Select a System</option>
           <option value="cardiac">Cardiac</option>
           <option value="neuro">Neuro</option>
           <option value="respiratory">Respiratory</option>
           <option value="urinary">Urinary</option>
-          <option value="gastro">Gastrointestinal</option>
+          <option value="gastro">Gastro</option>
           <option value="reproductive">Reproductive</option>
           <option value="endocrine">Endocrine</option>
-          <option value="msk">Musculoskeletal</option>
+          <option value="msk">MSK</option>
           <option value="trauma">Trauma</option>
           <option value="paediatric">Paediatric</option>
           <option value="geriatric">Geriatric</option>
           <option value="mental">Mental Health</option>
           <option value="other">Other</option>
         </select>
-        <input type="text" id="flag-text" placeholder="Enter red flag title" />
-        <textarea id="flag-desc" placeholder="(Optional) Why is this a red flag?"></textarea>
-        <input type="text" id="flag-source" placeholder="(Optional) Journal or source reference" />
-        <button onclick="addRedFlag()">Add Red Flag</button>
+        <input type="text" id="flag-text" placeholder="Red Flag Title" />
+        <textarea id="flag-desc" placeholder="Why is this a red flag? (optional)"></textarea>
+        <input type="text" id="flag-source" placeholder="Journal/source (optional)" />
+        <button onclick="addRedFlag()">Submit</button>
       </div>
     </div>
 
-    <!-- System Tabs Container (populated by JS) -->
+    <!-- System Tabs Container -->
     <div id="red-flag-tabs"></div>
   </div>
 
