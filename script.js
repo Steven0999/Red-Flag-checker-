@@ -46,7 +46,7 @@ function addRedFlag() {
 
   redFlagData[category].push({ title, desc, source });
 
-  // Reset form
+  // Clear form
   document.getElementById("flag-text").value = "";
   document.getElementById("flag-desc").value = "";
   document.getElementById("flag-source").value = "";
@@ -102,18 +102,23 @@ function renderRedFlags() {
       icon.alt = "Red Flag";
 
       const textContainer = document.createElement("div");
+      textContainer.classList.add("text-details");
+
       const title = document.createElement("strong");
       title.textContent = flag.title;
-
       textContainer.appendChild(title);
+
       if (flag.desc) {
         const desc = document.createElement("p");
+        desc.classList.add("flag-desc");
         desc.textContent = flag.desc;
         textContainer.appendChild(desc);
       }
+
       if (flag.source) {
-        const source = document.createElement("small");
-        source.textContent = `Source: ${flag.source}`;
+        const source = document.createElement("p");
+        source.classList.add("flag-source");
+        source.innerHTML = `<em>Source:</em> ${flag.source}`;
         textContainer.appendChild(source);
       }
 
@@ -143,4 +148,4 @@ function renderRedFlags() {
 
 function capitalize(word) {
   return word.charAt(0).toUpperCase() + word.slice(1);
-    }
+}
