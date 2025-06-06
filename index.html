@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Red Flag Markers</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>🚑 Red Flag Markers</h1>
+    <div class="form-section">
+      <select id="category">
+        <option value="">-- Select Category --</option>
+        <option value="cardiac">Cardiac</option>
+        <option value="neuro">Neuro</option>
+        <option value="respiratory">Respiratory</option>
+        <option value="urinary">Urinary</option>
+        <option value="gastro">Gastrointestinal</option>
+        <option value="reproductive">Reproductive</option>
+        <option value="endocrine">Endocrine</option>
+        <option value="msk">Musculoskeletal</option>
+        <option value="trauma">Trauma</option>
+        <option value="paediatric">Paediatric</option>
+        <option value="geriatric">Geriatric</option>
+        <option value="mental">Mental Health</option>
+        <option value="other">Other</option>
+      </select>
+      <input type="text" id="flag-text" placeholder="Enter red flag detail" />
+      <button onclick="addRedFlag()">Add Red Flag</button>
+    </div>
+    <div id="red-flag-display"></div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
